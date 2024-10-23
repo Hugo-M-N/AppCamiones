@@ -71,6 +71,23 @@ public class ViajeServiceImpl implements ViajeService{
 		
 		return result;
 	}
+	
+	@Override
+	public ViajeModel updateViaje(Integer id, ViajeModel update) {
+		ViajeModel result = new ViajeModel();
+		
+		try {
+			ViajeModel viaje = viajeRepo.findById(id).get();
+			viaje.setCamionero(update.getCamionero());
+			viaje.setCamion(update.getCamion());
+			viaje.setFechaViaje(update.getFechaViaje());
+			result = viaje;
+		} catch (Exception e) {
+			System.out.println("updateViaje: "+ e.getMessage());
+		}
+		
+		return result;
+	}
 
 	@Override
 	public Boolean deleteViaje(Integer id) {

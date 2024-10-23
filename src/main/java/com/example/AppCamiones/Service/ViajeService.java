@@ -14,5 +14,7 @@ public interface ViajeService {
 	
 	public ArrayList<ViajeModel> getViajesByFilter(ViajeModel filter);
 	
+	public ViajeModel updateViaje(Integer id, ViajeModel update);
+	
 	public Boolean deleteViaje(Integer id);
 }

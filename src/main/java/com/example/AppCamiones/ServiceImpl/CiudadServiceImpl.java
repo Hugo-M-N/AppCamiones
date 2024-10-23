@@ -71,6 +71,24 @@ public class CiudadServiceImpl implements CiudadService{
 		
 		return result;
 	}
+	
+	@Override
+	public CiudadModel updateCiudad(Integer id, CiudadModel update) {
+		CiudadModel result = new CiudadModel();
+		
+		try {
+			CiudadModel ciudad = ciudadRepo.findById(id).get();
+			ciudad.setCodigoCiudad(update.getCodigoCiudad());
+			ciudad.setNombreCiudad(update.getNombreCiudad());
+			ciudad.setPaquetes(update.getPaquetes());
+			result=ciudad;
+		} catch (Exception e) {
+			System.out.println("updateCiudad: "+ e.getMessage());
+		}
+		
+		return result;
+		
+	}
 
 	@Override
 	public Boolean deleteCiudad(Integer id) {

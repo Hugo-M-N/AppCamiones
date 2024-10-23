@@ -73,6 +73,25 @@ public class PaqueteServiceImlp implements PaqueteService{
 		
 		return result;
 	}
+	
+	@Override
+	public PaqueteModel updatePaquete(Integer id, PaqueteModel update) {
+		PaqueteModel result = new PaqueteModel();
+		
+		try {
+			PaqueteModel paquete = paqueteRepo.findById(id).get();
+			paquete.setCodigoPaquete(update.getCodigoPaquete());
+			paquete.setDescripcion(update.getDescripcion());
+			paquete.setCiudadDestino(update.getCiudadDestino());
+			paquete.setDestino(update.getDestino());
+			paquete.setCamionero(update.getCamionero());
+			result=paquete;
+		} catch (Exception e) {
+			System.out.println("updatePaquete: "+ e.getMessage());
+		}
+	
+		return result;
+	}
 
 	@Override
 	public Boolean deletePaquete(Integer id) {

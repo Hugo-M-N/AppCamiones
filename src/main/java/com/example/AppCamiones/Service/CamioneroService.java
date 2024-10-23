@@ -14,5 +14,7 @@ public interface CamioneroService {
 	
 	public ArrayList<CamioneroModel> getCamionerosByFilter(CamioneroModel filter);
 	
+	public CamioneroModel updateCamionero(Integer id, CamioneroModel update);
+	
 	public Boolean deleteCamionero(Integer id);
 }

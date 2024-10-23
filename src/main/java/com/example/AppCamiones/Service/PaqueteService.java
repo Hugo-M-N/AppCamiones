@@ -14,5 +14,7 @@ public interface PaqueteService {
 	
 	public ArrayList<PaqueteModel> getPaquetesByFilter(PaqueteModel filter);
 	
+	public PaqueteModel updatePaquete(Integer id, PaqueteModel update);
+	
 	public Boolean deletePaquete(Integer id);
 }

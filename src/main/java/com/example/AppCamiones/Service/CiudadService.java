@@ -14,5 +14,7 @@ public interface CiudadService {
 	
 	public ArrayList<CiudadModel> getCiudadesByFilter(CiudadModel filter);
 	
+	public CiudadModel updateCiudad(Integer id, CiudadModel update);
+	
 	public Boolean deleteCiudad(Integer id);
 }

@@ -70,6 +70,24 @@ public class CamionServiceImpl implements CamionService{
 		
 		return result;
 	}
+	
+	@Override
+	public CamionModel updateCamion(Integer id, CamionModel update) {
+		CamionModel result = new CamionModel();
+		
+		try {
+			CamionModel camion = camionRepo.findById(id).get();
+			camion.setMatricula(update.getMatricula());
+			camion.setModelo(update.getModelo());
+			camion.setKm(update.getKm());
+			camion.setViaje(update.getViaje());
+			result=camion;
+		} catch (Exception e) {
+			System.out.println("updateCamion: "+ e.getMessage());
+		}
+		
+		return result;
+	}
 
 	@Override
 	public Boolean deleteCamion(Integer id) {

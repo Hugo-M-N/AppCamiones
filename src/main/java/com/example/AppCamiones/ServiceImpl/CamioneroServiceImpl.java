@@ -74,6 +74,27 @@ public class CamioneroServiceImpl implements CamioneroService{
 		
 		return result;
 	}
+	
+	@Override
+	public CamioneroModel updateCamionero(Integer id, CamioneroModel update) {
+		CamioneroModel result = new CamioneroModel();
+		
+		try {
+			CamioneroModel camionero = camioneroRepo.findById(id).get();
+			camionero.setNombre(update.getNombre());
+			camionero.setDni(update.getDni());
+			camionero.setDireccion(update.getDireccion());
+			camionero.setSalario(update.getSalario());
+			camionero.setTelefono(update.getTelefono());
+			camionero.setPaquetes(update.getPaquetes());
+			camionero.setViajes(update.getViajes());
+			result = camionero;
+		} catch (Exception e) {
+			System.out.println("updateCamionero: "+ e.getMessage());
+		}
+		
+		return result;
+	}
 
 	@Override
 	public Boolean deleteCamionero(Integer id) {
