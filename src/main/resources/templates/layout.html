@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<head th:fragment="layout-header">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title th:text="${titulo}"></title>
+</head>
+<body>
+    <nav th:fragment="layout-navbar">
+        <a href="/">App Camiones</a>
+        <ul>
+            <li><a th:href="@{/camionero}">camioneros</a></li>
+            <li><a th:href="@{/camion}">camiones</a></li>
+            <li><a th:href="@{/ciudad}">ciudades</a></li>
+            <li><a th:href="@{/paquete}">paquetes</a></li>
+            <li><a th:href="@{/viaje}">viajes</a></li>
+        </ul>
+        <a href="/logout">Logout</a>
+    </nav>
+    <footer th:fragment="layout-footer">
+        <p>Desarrollado por Hugo Martín Nacarino &copy; - 2024</p>
+    </footer>
+</body>
+</html>

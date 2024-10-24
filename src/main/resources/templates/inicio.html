@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+	<header th:replace="~{layout::layout-header}"></header>
+	<body>
+		<nav th:replace="~{layout::layout-navbar}"></nav>
+		<main class="inicio">
+		    <h1 class="inicio__titulo">App Camiones</h1>
+			
+			<section>
+				<ul>
+					<li>camioneros: <pan th:text="${camioneros}"></pan></li>
+		            <li>camiones: <pan th:text="${camiones}"></pan></li>
+		            <li>ciudades: <pan th:text="${ciudades}"></pan></li>
+		            <li>paquetes: <pan th:text="${paquetes}"></pan></li>
+		            <li>viajes: <pan th:text="${viajes}"></pan></li>
+				</ul>
+			</section>
+		</main>
+	</body>
+	<footer th:replace="~{layout::layout-footer}"></footer>
+</html>
