@@ -3,19 +3,20 @@ package com.example.AppCamiones.Controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AppCamiones.Model.PaqueteModel;
 import com.example.AppCamiones.Service.PaqueteService;
 
-@RestController
+@Controller
 @RequestMapping("/paquete")
 public class PaqueteController {
 
@@ -23,12 +24,10 @@ public class PaqueteController {
 	PaqueteService paqueteService;
 	
 	@PostMapping("/add")
-	public PaqueteModel addPaquete(@RequestBody PaqueteModel paquete) {
-		PaqueteModel result = new PaqueteModel();
+	public String addPaquete(@ModelAttribute PaqueteModel paquete) {
+		PaqueteModel result = paqueteService.addPaquete(paquete);
 		
-		result = paqueteService.addPaquete(paquete);
-		
-		return result;
+		return "redirect:/paquetes";
 	}
 	
 	@GetMapping("/getAll")
@@ -59,20 +58,16 @@ public class PaqueteController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public PaqueteModel updatePaquete(@PathVariable(name="id")Integer id, @RequestBody PaqueteModel update) {
-		PaqueteModel result = new PaqueteModel();
+	public String updatePaquete(@PathVariable(name="id")Integer id, @ModelAttribute PaqueteModel update) {
+		PaqueteModel result = paqueteService.updatePaquete(id, update);
 		
-		result = paqueteService.updatePaquete(id, update);
-		
-		return result;
+		return "redirect:/paquetes";
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public Boolean deletePaquete(@PathVariable(name="id")Integer id) {
-		Boolean result = false;
+	public String deletePaquete(@PathVariable(name="id")Integer id) {
+		Boolean result = paqueteService.deletePaquete(id);
 		
-		result = paqueteService.deletePaquete(id);
-		
-		return result;
+		return "redirect:/paquetes";
 	}
 }

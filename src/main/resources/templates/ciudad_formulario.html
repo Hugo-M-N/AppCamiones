@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main>
+        <h1 class="titulo">Ciudad</h1>
+
+        <form th:action="@{{url}(url=${url})}" th:method="post" th:object="${ciudad}" class="ciudad__formulario">
+			<input type="hidden" name="_method" th:value="${method}">
+
+            <label for="codigoCiudad">Código Ciudad:</label>
+            <input type="text" id="codigoCiudad" name="codigoCiudad" th:value="${ciudad.codigoCiudad}"  th:field="*{codigoCiudad}"/>
+    
+            <label for="nombreCiudad">Nombre Ciudad:</label>
+            <input type="text" id="nombreCiudad" name="nombreCiudad" th:value="${ciudad.nombreCiudad}" th:field="*{nombreCiudad}"/>
+
+            <label for="idCiudad">ID:</label>
+            <input type="text" id="idCiudad" name="idCiudad" th:value="${ciudad.idCiudad}" th:field="*{idCiudad}" disabled/>
+    
+            <input type="submit" value="Guardar">
+        </form>
+        
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

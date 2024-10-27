@@ -3,20 +3,21 @@ package com.example.AppCamiones.Controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AppCamiones.Model.CamionModel;
 import com.example.AppCamiones.Service.CamionService;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
-@RestController
+@Controller
 @RequestMapping("/camion")
 public class CamionController {
 
@@ -24,12 +25,10 @@ public class CamionController {
 	CamionService camionService;
 	
 	@PostMapping("/add")
-	public CamionModel addCamion(@RequestBody CamionModel camion) {
-		CamionModel result = new CamionModel();
+	public String addCamion(@ModelAttribute CamionModel camion) {
+		CamionModel result = camionService.addCamion(camion);
 		
-		result = camionService.addCamion(camion);
-		
-		return result;
+		return "redirect:/camiones";
 	}
 	
 	@GetMapping("/getAll")
@@ -60,21 +59,17 @@ public class CamionController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public CamionModel updateCamion(@PathVariable Integer id, @RequestBody CamionModel update) {
-		CamionModel result = new CamionModel();
+	public String updateCamion(@PathVariable Integer id, @ModelAttribute CamionModel update) {
+		CamionModel result = camionService.updateCamion(id, update);
 		
-		result = camionService.updateCamion(id, update);
-		
-		return result;
+		return "redirect:/camiones";
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public Boolean deleteCamion(@PathVariable(name="id")Integer id) {
-		Boolean result = false;
+	public String deleteCamion(@PathVariable(name="id")Integer id) {
+		Boolean result = camionService.deleteCamion(id);
 		
-		result = camionService.deleteCamion(id);
-		
-		return result;
+		return "redirect:/camiones";
 	}
 	
 }

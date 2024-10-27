@@ -3,19 +3,20 @@ package com.example.AppCamiones.Controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AppCamiones.Model.CiudadModel;
 import com.example.AppCamiones.Service.CiudadService;
 
-@RestController
+@Controller
 @RequestMapping("/ciudad")
 public class CiudadController {
 
@@ -23,12 +24,10 @@ public class CiudadController {
 	CiudadService ciudadService;
 	
 	@PostMapping("/add")
-	public CiudadModel addCiudad(@RequestBody CiudadModel ciudad) {
-		CiudadModel result = new CiudadModel();
+	public String addCiudad(@ModelAttribute CiudadModel ciudad) {
+		CiudadModel result = ciudadService.addCiudad(ciudad);
 		
-		result = ciudadService.addCiudad(ciudad);
-		
-		return result;
+		return "redirect:/ciudades";
 	}
 	
 	@GetMapping("/getAll")
@@ -59,20 +58,16 @@ public class CiudadController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public CiudadModel updateCiudad(@PathVariable(name="id")Integer id, @RequestBody CiudadModel update) {
-		CiudadModel result = new CiudadModel();
+	public String updateCiudad(@PathVariable(name="id")Integer id, @ModelAttribute CiudadModel update) {
+		CiudadModel result = ciudadService.updateCiudad(id, update);
 		
-		result = ciudadService.updateCiudad(id, update);
-		
-		return result;
+		return "redirect:/ciudades";
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public Boolean deleteCiudad(@PathVariable(name="id")Integer id) {
-		Boolean result = false;
+	public String deleteCiudad(@PathVariable(name="id")Integer id) {
+		Boolean result = ciudadService.deleteCiudad(id);
 		
-		result = ciudadService.deleteCiudad(id);
-		
-		return result;
+		return "redirect:/ciudades";
 	}
 }

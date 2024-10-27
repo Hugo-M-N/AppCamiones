@@ -6,7 +6,7 @@
     <main class="camioneros">
         <h1 class="titulo">Camioneros</h1>
 
-        <a th:href="@{/camionero_formulario/{maxId}(maxId=${maxId})}" class="boton addcamionero">Añadir camionero</a>
+        <a th:href="@{/camionero_formulario/{maxId}(maxId=${maxId})}" class="boton add">Añadir camionero</a>
 
         <ul class="camioneros__lista">
             <li class="camioneros__lista__elemento">
@@ -19,7 +19,7 @@
                 <p class="camioneros__lista__elemento--texto" >editar</p>
                 <p class="camioneros__lista__elemento--texto" >Eliminar</p>
             </li>
-            <li th:each="camionero : ${camioneros}" class="camioneros__lista__elemento">
+            <li th:each="camionero : ${camioneros}" class="camioneros__lista__elemento" th:if="${camioneros != null}">
                 <p class="camioneros__lista__elemento--texto" th:text="${camionero.idCamionero}">id_camionero</p>
                 <p class="camioneros__lista__elemento--texto" th:text="${camionero.direccion}">dirección</p>
                 <p class="camioneros__lista__elemento--texto" th:text="${camionero.dni}">DNI</p>

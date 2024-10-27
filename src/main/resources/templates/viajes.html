@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main class="viajes">
+        <h1 class="titulo">viajes</h1>
+
+        <a th:href="@{/viaje_formulario/{maxId}(maxId=${maxId})}" class="boton add">Añadir viaje</a>
+
+        <ul class="viajes__lista">
+            <li class="viajes__lista__elemento">
+                <p class="viajes__lista__elemento--texto" >id_viaje</p>
+                <p class="viajes__lista__elemento--texto" >Camionero</p>
+                <p class="viajes__lista__elemento--texto" >camion</p>
+                <p class="viajes__lista__elemento--texto" >fecha viaje</p>
+                <p class="viajes__lista__elemento--texto" >editar</p>
+                <p class="viajes__lista__elemento--texto" >Eliminar</p>
+            </li>
+            <li th:each="viaje : ${viajes}" class="viajes__lista__elemento" th:if="${!viajes.isEmpty()}">
+                <p class="viajes__lista__elemento--texto" th:text="${viaje.idViaje}">id_viaje</p>
+                <p class="viajes__lista__elemento--texto" th:text="${viaje.camionero}">camionero</p>
+                <p class="viajes__lista__elemento--texto" th:text="${viaje.camion}">camion</p>
+                <p class="viajes__lista__elemento--texto" th:text="${viaje.fechaViaje}">fecha viaje</p>
+                <a th:href="@{/editar_viaje/{id}(id=${viaje.idViaje})}" class="boton opcion">editar</a>
+                <form th:action="@{/viaje/delete/{id}(id=${viaje.idViaje})}" th:method="post" >
+					<input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="boton opcion">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

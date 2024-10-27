@@ -21,7 +21,7 @@ public class ViajeModel {
 	@ManyToOne
 	@JoinColumn(name="id_camionero")
 	private CamioneroModel camionero;
-	
+							
 	@ManyToOne
 	@JoinColumn(name="id_camion")
 	private CamionModel camion;

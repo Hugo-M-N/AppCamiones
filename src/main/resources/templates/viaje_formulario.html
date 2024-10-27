@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main>
+        <h1 class="titulo">Viaje</h1>
+
+        <form th:action="@{{url}(url=${url})}" th:method="post" th:object="${viaje}" class="viaje__formulario">
+			<input type="hidden" name="_method" th:value="${method}">
+            <label for="camionero">Camionero:</label>
+            <select name="camionero" id="camionero">
+                <option th:each="camionero : ${camioneros}" th:value="${camionero.idCamionero}" th:text="${camionero.nombre}"></option>
+            </select>
+            <label for="camion">Camion:</label>
+            <select name="camion" id="camion">
+                <option th:each="camion : ${camiones}" th:value="${camion.idCamion}" th:text="${camion.matricula}"></option>
+            </select>
+
+            <label for="fechaViaje">Fecha</label>
+            <input type="date" name="fechaViaje" id="fechaViaje" th:value="${viaje.fechaViaje}">
+
+            <label for="idViaje">ID:</label>
+            <input type="text" id="idViaje" name="idViaje" th:value="${viaje.idViaje}" th:field="*{idViaje}" disabled/>
+    
+            <input type="submit" value="Guardar">
+        </form>
+        
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main class="camiones">
+        <h1 class="titulo">Camiones</h1>
+
+        <a th:href="@{/camion_formulario/{maxId}(maxId=${maxId})}" class="boton add">Añadir camión</a>
+
+        <ul class="camiones__lista">
+            <li class="camiones__lista__elemento">
+                <p class="camiones__lista__elemento--texto" >id_camion</p>
+                <p class="camiones__lista__elemento--texto" >Matricula</p>
+                <p class="camiones__lista__elemento--texto" >Modelo</p>
+                <p class="camiones__lista__elemento--texto" >Km</p>
+                <p class="camiones__lista__elemento--texto" >editar</p>
+                <p class="camiones__lista__elemento--texto" >Eliminar</p>
+            </li>
+            <li th:each="camion : ${camiones}" class="camiones__lista__elemento" th:if="${camiones != null}">
+                <p class="camiones__lista__elemento--texto" th:text="${camion.idCamion}">id_camion</p>
+                <p class="camiones__lista__elemento--texto" th:text="${camion.matricula}">matricula</p>
+                <p class="camiones__lista__elemento--texto" th:text="${camion.modelo}">modelo</p>
+                <p class="camiones__lista__elemento--texto" th:text="${camion.km}">Km</p>
+                <a th:href="@{/editar_camion/{id}(id=${camion.idCamion})}" class="boton opcion">editar</a>
+                <form th:action="@{/camion/delete/{id}(id=${camion.idCamion})}" th:method="post" >
+					<input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="boton opcion">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

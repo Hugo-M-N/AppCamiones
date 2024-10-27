@@ -136,7 +136,7 @@ body {
     height: 83dvh;
  }
 
- .addcamionero{
+ .add{
     text-align: center;
     margin: 3rem auto;
  }
@@ -225,6 +225,322 @@ body {
  }
 
  .camionero__formulario input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: var(--color-principal);
+    color: var(--blanco);
+ }
+
+ .camiones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 83dvh;
+ }
+
+ .camiones__lista{
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .camiones__lista__elemento{
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    align-items: center;
+    text-align: center;
+ }
+
+ .camiones__lista__elemento--texto{
+    padding: 1rem;
+    border: .5rem solid black;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    
+ }
+
+ .camion__formulario{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2rem auto;
+ }
+
+ .camion__formulario label{
+    color: var(--color-principal);
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+ }
+
+ .camion__formulario input{
+    margin: 1rem auto;
+    width: 80%;
+    height: 3rem;
+    border: none;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+ }
+
+ .camion__formulario input[type="submit"]{
+    width: 20rem;
+    height: 5rem;
+    font-size: 3.5rem;
+    background-color: var(--grisClaro);
+    border-radius: 1rem;
+ }
+
+ .camion__formulario input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: var(--color-principal);
+    color: var(--blanco);
+ }
+
+ .ciudades{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 83dvh;
+ }
+
+ .ciudades__lista{
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .ciudades__lista__elemento{
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    align-items: center;
+    text-align: center;
+ }
+
+ .ciudades__lista__elemento--texto{
+    padding: 1rem;
+    border: .5rem solid black;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    
+ }
+
+ .ciudad__formulario{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2rem auto;
+ }
+
+ .ciudad__formulario label{
+    color: var(--color-principal);
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+ }
+
+ .ciudad__formulario input{
+    margin: 1rem auto;
+    width: 80%;
+    height: 3rem;
+    border: none;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+ }
+
+ .ciudad__formulario input[type="submit"]{
+    width: 20rem;
+    height: 5rem;
+    font-size: 3.5rem;
+    background-color: var(--grisClaro);
+    border-radius: 1rem;
+ }
+
+ .ciudad__formulario input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: var(--color-principal);
+    color: var(--blanco);
+ }
+
+ .paquetes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 83dvh;
+ }
+
+ .paquetes__lista{
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .paquetes__lista__elemento{
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    align-items: center;
+    text-align: center;
+ }
+
+ .paquetes__lista__elemento--texto{
+    padding: 1rem;
+    border: .5rem solid black;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    
+ }
+
+ .paquete__formulario{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2rem auto;
+ }
+
+ .paquete__formulario label{
+    color: var(--color-principal);
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+ }
+
+ .paquete__formulario input{
+    margin: 1rem auto;
+    width: 80%;
+    height: 3rem;
+    border: none;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+ }
+
+ .paquete__formulario select{
+    margin: 1rem auto;
+    width: 80%;
+    height: 3rem;
+    border: none;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+ }
+
+ .paquete__formulario input[type="submit"]{
+    width: 20rem;
+    height: 5rem;
+    font-size: 3.5rem;
+    background-color: var(--grisClaro);
+    border-radius: 1rem;
+ }
+
+ .paquete__formulario input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: var(--color-principal);
+    color: var(--blanco);
+ }
+
+ .viajes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 83dvh;
+ }
+
+ .viajes__lista{
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .viajes__lista__elemento{
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    align-items: center;
+    text-align: center;
+ }
+
+ .viajes__lista__elemento--texto{
+    padding: 1rem;
+    border: .5rem solid black;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    
+ }
+
+ .viaje__formulario{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2rem auto;
+ }
+
+ .viaje__formulario label{
+    color: var(--color-principal);
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+ }
+
+ .viaje__formulario input{
+    margin: 1rem auto;
+    width: 80%;
+    height: 3rem;
+    border: none;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+ }
+
+ .viaje__formulario select{
+    margin: 1rem auto;
+    width: 80%;
+    height: 3rem;
+    border: none;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+ }
+
+ .viaje__formulario input[type="submit"]{
+    width: 20rem;
+    height: 5rem;
+    font-size: 3.5rem;
+    background-color: var(--grisClaro);
+    border-radius: 1rem;
+ }
+
+ .viaje__formulario input[type="submit"]:hover{
     cursor: pointer;
     background-color: var(--color-principal);
     color: var(--blanco);

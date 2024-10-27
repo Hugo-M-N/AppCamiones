@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main class="paquetes">
+        <h1 class="titulo">paquetes</h1>
+
+        <a th:href="@{/paquete_formulario/{maxId}(maxId=${maxId})}" class="boton add">Añadir paquete</a>
+
+        <ul class="paquetes__lista">
+            <li class="paquetes__lista__elemento">
+                <p class="paquetes__lista__elemento--texto" >id_paquete</p>
+                <p class="paquetes__lista__elemento--texto" >Código paquete</p>
+                <p class="paquetes__lista__elemento--texto" >Descrición</p>
+                <p class="paquetes__lista__elemento--texto" >Destino</p>
+                <p class="paquetes__lista__elemento--texto" >Camionero</p>
+                <p class="paquetes__lista__elemento--texto" >Ciudad</p>
+                <p class="paquetes__lista__elemento--texto" >editar</p>
+                <p class="paquetes__lista__elemento--texto" >Eliminar</p>
+            </li>
+            <li th:each="paquete : ${paquetes}" class="paquetes__lista__elemento" th:if="${!paquetes.isEmpty()}">
+                <p class="paquetes__lista__elemento--texto" th:text="${paquete.idPaquete}">id_paquete</p>
+                <p class="paquetes__lista__elemento--texto" th:text="${paquete.codigoPaquete}">codigo paquete</p>
+                <p class="paquetes__lista__elemento--texto" th:text="${paquete.descripcion}">descripcion</p>
+                <p class="paquetes__lista__elemento--texto" th:text="${paquete.destino}">destino</p>
+                <p class="paquetes__lista__elemento--texto" th:text="${paquete.camionero.nombre}">camionero</p>
+                <p class="paquetes__lista__elemento--texto" th:text="${paquete.ciudadDestino.nombreCiudad}">ciudad</p>
+                <a th:href="@{/editar_paquete/{id}(id=${paquete.idPaquete})}" class="boton opcion">editar</a>
+                <form th:action="@{/paquete/delete/{id}(id=${paquete.idPaquete})}" th:method="post" >
+					<input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="boton opcion">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

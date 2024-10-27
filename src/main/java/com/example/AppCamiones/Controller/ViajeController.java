@@ -3,19 +3,20 @@ package com.example.AppCamiones.Controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AppCamiones.Model.ViajeModel;
 import com.example.AppCamiones.Service.ViajeService;
 
-@RestController
+@Controller
 @RequestMapping("/viaje")
 public class ViajeController {
 
@@ -23,12 +24,10 @@ public class ViajeController {
 	ViajeService viajeService;
 	
 	@PostMapping("/add")
-	public ViajeModel addViaje(@RequestBody ViajeModel viaje) {
-		ViajeModel result = new ViajeModel();
+	public String addViaje(@ModelAttribute ViajeModel viaje) {
+		ViajeModel result = viajeService.addViaje(viaje);
 		
-		result = viajeService.addViaje(viaje);
-		
-		return result;
+		return "redirect:/viajes";
 	}
 	
 	@GetMapping("/getAll")
@@ -59,20 +58,16 @@ public class ViajeController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ViajeModel updateViaje(@PathVariable(name="id")Integer id, @RequestBody ViajeModel update) {
-		ViajeModel result = new ViajeModel();
+	public String updateViaje(@PathVariable(name="id")Integer id, @ModelAttribute ViajeModel update) {
+		ViajeModel result = viajeService.updateViaje(id, update);
 		
-		result = viajeService.updateViaje(id, update);
-		
-		return result;
+		return "redirect:/viajes";
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public Boolean deleteViaje(@PathVariable(name="id")Integer id) {
-		Boolean result = false;
+	public String deleteViaje(@PathVariable(name="id")Integer id) {
+		Boolean result = viajeService.deleteViaje(id);
 		
-		result = viajeService.deleteViaje(id);
-		
-		return result;
+		return "redirect:/viajes";
 	}
 }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main>
+        <h1 class="titulo">Paquete</h1>
+
+        <form th:action="@{{url}(url=${url})}" th:method="post" th:object="${paquete}" class="paquete__formulario">
+			<input type="hidden" name="_method" th:value="${method}">
+            <label for="codigoPaquete">Código paquete:</label>
+            <input type="text" id="codigoPaquete" name="codigoPaquete" th:value="${paquete.codigoPaquete}"  th:field="*{codigoPaquete}"/>
+    
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" th:value="${paquete.descripcion}" th:field="*{descripcion}"/>
+    
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" name="destino" th:value="${paquete.destino}" th:field="*{destino}"/>
+    
+            <label for="ciudadDestino">Ciudad destino:</label>
+            <select name="ciudadDestino" id="ciudadDestino">
+                <option th:each="ciudad : ${ciudades}" th:value="${ciudad.idCiudad}" th:text="${ciudad.nombreCiudad}"></option>
+            </select>
+    
+            <label for="camionero">Camionero:</label>
+            <select name="camionero" id="camionero">
+                <option th:each="camionero : ${camioneros}" th:value="${camionero.idCamionero}" th:text="${camionero.nombre}"></option>
+            </select>
+
+            <label for="idPaquete">ID:</label>
+            <input type="text" id="idPaquete" name="idPaquete" th:value="${paquete.idPaquete}" th:field="*{idPaquete}" disabled/>
+    
+            <input type="submit" value="Guardar">
+        </form>
+        
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

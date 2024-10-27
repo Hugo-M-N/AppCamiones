@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main class="ciudades">
+        <h1 class="titulo">Ciudades</h1>
+
+        <a th:href="@{/ciudad_formulario/{maxId}(maxId=${maxId})}" class="boton add">Añadir ciudad</a>
+
+        <ul class="ciudades__lista">
+            <li class="ciudades__lista__elemento">
+                <p class="ciudades__lista__elemento--texto" >id_ciudad</p>
+                <p class="ciudades__lista__elemento--texto" >Código ciudad</p>
+                <p class="ciudades__lista__elemento--texto" >Nombre ciudad</p>
+                <p class="ciudades__lista__elemento--texto" >editar</p>
+                <p class="ciudades__lista__elemento--texto" >Eliminar</p>
+            </li>
+            <li th:each="ciudad : ${ciudades}" class="ciudades__lista__elemento" th:if="${!ciudades.isEmpty()}">
+                <p class="ciudades__lista__elemento--texto" th:text="${ciudad.idCiudad}">id_ciudad</p>
+                <p class="ciudades__lista__elemento--texto" th:text="${ciudad.codigoCiudad}">codigo ciudad</p>
+                <p class="ciudades__lista__elemento--texto" th:text="${ciudad.nombreCiudad}">nombre</p>
+                <a th:href="@{/editar_ciudad/{id}(id=${ciudad.idCiudad})}" class="boton opcion">editar</a>
+                <form th:action="@{/ciudad/delete/{id}(id=${ciudad.idCiudad})}" th:method="post" >
+					<input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="boton opcion">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>
