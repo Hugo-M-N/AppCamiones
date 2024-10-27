@@ -89,6 +89,7 @@ public class CamioneroServiceImpl implements CamioneroService{
 			camionero.setPaquetes(update.getPaquetes());
 			camionero.setViajes(update.getViajes());
 			result = camionero;
+			camioneroRepo.save(result);
 		} catch (Exception e) {
 			System.out.println("updateCamionero: "+ e.getMessage());
 		}

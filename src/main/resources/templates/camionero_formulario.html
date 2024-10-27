@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main>
+        <h1 class="titulo">Camionero</h1>
+
+        <form th:action="@{{url}(url=${url})}" th:method="post" th:object="${camionero}" class="camionero__formulario">
+			<input type="hidden" name="_method" th:value="${method}">
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" th:value="${camionero.direccion}"  th:field="*{direccion}"/>
+        
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni" th:value="${camionero.dni}" th:field="*{dni}"/>
+        
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" th:value="${camionero.nombre}" th:field="*{nombre}"/>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" th:value="${camionero.telefono}" th:field="*{telefono}"/>
+            </fieldset>
+
+            <label for="idCamionero">ID:</label>
+            <input type="text" id="idCamionero" name="idCamionero" th:value="${camionero.idCamionero}" th:field="*{idCamionero}" disabled/>
+
+            <label for="salario">Salario:</label>
+            <input type="number" id="salario" name="salario" th:value="${camionero.salario}" th:field="*{salario}"/>
+    
+            <input type="submit" value="Guardar">
+
+
+        </form>
+        
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,231 @@
+ /* Globales */
+ :root {
+    --color-principal:#eb830c;
+    --gris: grey;
+    --grisClaro: lightgrey;
+    --grisOscuro: darkgrey;
+    --blanco: white;
+    --negro: black;
+
+    --fuente:'system-ui';
+ }
+
+ html{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: var(--fuente);
+ }
+
+body {
+    background-color: var(--gris);
+    margin: 0;
+}
+
+.titulo {
+    color: var(--color-principal);
+    background-color: var(--grisClaro);
+    border-radius: 3rem;
+    padding: 2rem;
+    margin: 2rem auto;
+    width: 50%;
+    font-size: 8rem;
+    text-align: center;
+ }
+
+ .boton{
+    text-decoration: none;
+    font-size: 3rem;
+    background-color: var(--grisClaro);
+    border-radius: 2rem;
+    padding: 1rem;
+    color: var(--color-principal);
+ }
+
+ .boton:hover{
+    color: var(--blanco);
+    background-color: var(--color-principal);
+ }
+
+ .layout-navbar{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--grisClaro);
+    margin: 0;
+    padding: 1rem;
+    height: 8rem;
+    align-items: center;
+    justify-content: space-evenly;
+ }
+
+ .navbar__titulo{
+    font-size: 4rem;
+    text-decoration: none;
+    color: var(--color-principal);
+    font-weight: bold;
+ }
+
+ .navbar__lista__elemento{
+    text-decoration: none;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-principal);
+    padding: .5rem;
+    margin: .5rem;
+ }
+
+ .navbar__lista__elemento:hover{
+    color: var(--blanco);
+    background-color: var(--color-principal);
+    border-radius: 1rem;
+ }
+
+ .navbar__lista{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    -ms-flex-align: center;
+    justify-content: space-evenly;
+ }
+
+ .navbar__logout{
+    text-decoration: none;
+    color: var(--color-principal);
+    font-size: 3rem;
+    font-weight: bold;
+ }
+
+ .layout-footer {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--grisClaro);
+    color: var(--color-principal);
+    padding: .1rem;
+ }
+
+ .inicio {
+    height: 83dvh;
+ }
+
+ .inicio__lista{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    width: 80%;
+    margin: 10rem auto;
+ }
+
+ .inicio__lista__elemento{
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+    background-color: var(--grisOscuro);
+    color: var(--grisClaro);
+    font-weight: bold;
+    text-transform: uppercase;
+ }
+
+ .inicio__lista__elemento span{
+    color: var(--color-principal);
+ }
+
+ .camioneros{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 83dvh;
+ }
+
+ .addcamionero{
+    text-align: center;
+    margin: 3rem auto;
+ }
+
+ .camioneros__lista{
+    width: 90%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+
+ .camioneros__lista__elemento{
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    align-items: center;
+    text-align: center;
+ }
+
+ .camioneros__lista__elemento--texto{
+    padding: 1rem;
+    border: .5rem solid black;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+    width: 15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    
+ }
+
+ .opcion{
+    padding: 1rem;
+    border: .5rem solid black;
+    border-radius: 0;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+    width: 15rem;
+ }
+
+ .camionero__formulario{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2rem auto;
+ }
+
+ .camionero__formulario fieldset{
+    display: flex;
+    flex-direction: column;
+    border: .5rem solid var(--color-principal);
+ }
+
+ .camionero__formulario legend{
+    color: var(--color-principal);
+    font-size: 2rem;
+    font-weight: bold;
+ }
+
+ .camionero__formulario label{
+    color: var(--color-principal);
+    margin: 0 auto;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+ }
+
+ .camionero__formulario input{
+    margin: 1rem auto;
+    width: 80%;
+    height: 3rem;
+    border: none;
+    background-color: var(--grisOscuro);
+    font-size: 2rem;
+    color: var(--color-principal);
+ }
+
+ .camionero__formulario input[type="submit"]{
+    width: 20rem;
+    height: 5rem;
+    font-size: 3.5rem;
+    background-color: var(--grisClaro);
+    border-radius: 1rem;
+ }
+
+ .camionero__formulario input[type="submit"]:hover{
+    cursor: pointer;
+    background-color: var(--color-principal);
+    color: var(--blanco);
+ }

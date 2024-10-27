@@ -4,15 +4,15 @@
 	<body>
 		<nav th:replace="~{layout::layout-navbar}"></nav>
 		<main class="inicio">
-		    <h1 class="inicio__titulo">App Camiones</h1>
+		    <h1 class="titulo">App Camiones</h1>
 			
 			<section>
-				<ul>
-					<li>camioneros: <pan th:text="${camioneros}"></pan></li>
-		            <li>camiones: <pan th:text="${camiones}"></pan></li>
-		            <li>ciudades: <pan th:text="${ciudades}"></pan></li>
-		            <li>paquetes: <pan th:text="${paquetes}"></pan></li>
-		            <li>viajes: <pan th:text="${viajes}"></pan></li>
+				<ul class="inicio__lista">
+					<li class="inicio__lista__elemento">camioneros: <span th:text="${camioneros}"></span></li>
+		            <li class="inicio__lista__elemento">camiones: <span th:text="${camiones}"></span></li>
+		            <li class="inicio__lista__elemento">ciudades: <span th:text="${ciudades}"></span></li>
+		            <li class="inicio__lista__elemento">paquetes: <span th:text="${paquetes}"></span></li>
+		            <li class="inicio__lista__elemento">viajes: <span th:text="${viajes}"></span></li>
 				</ul>
 			</section>
 		</main>

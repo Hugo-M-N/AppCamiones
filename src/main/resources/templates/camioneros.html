@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thyleaf.org">
+<header th:replace="~{layout::layout-header}"></header>
+<body>
+	<nav th:replace="~{layout::layout-navbar}"></nav>
+    <main class="camioneros">
+        <h1 class="titulo">Camioneros</h1>
+
+        <a th:href="@{/camionero_formulario/{maxId}(maxId=${maxId})}" class="boton addcamionero">Añadir camionero</a>
+
+        <ul class="camioneros__lista">
+            <li class="camioneros__lista__elemento">
+                <p class="camioneros__lista__elemento--texto" >id_camionero</p>
+                <p class="camioneros__lista__elemento--texto" >dirección</p>
+                <p class="camioneros__lista__elemento--texto" >DNI</p>
+                <p class="camioneros__lista__elemento--texto" >Nombre</p>
+                <p class="camioneros__lista__elemento--texto" >salario</p>
+                <p class="camioneros__lista__elemento--texto" >telefono</p>
+                <p class="camioneros__lista__elemento--texto" >editar</p>
+                <p class="camioneros__lista__elemento--texto" >Eliminar</p>
+            </li>
+            <li th:each="camionero : ${camioneros}" class="camioneros__lista__elemento">
+                <p class="camioneros__lista__elemento--texto" th:text="${camionero.idCamionero}">id_camionero</p>
+                <p class="camioneros__lista__elemento--texto" th:text="${camionero.direccion}">dirección</p>
+                <p class="camioneros__lista__elemento--texto" th:text="${camionero.dni}">DNI</p>
+                <p class="camioneros__lista__elemento--texto" th:text="${camionero.nombre}">Nombre</p>
+                <p class="camioneros__lista__elemento--texto" th:text="${camionero.salario}">salario</p>
+                <p class="camioneros__lista__elemento--texto" th:text="${camionero.telefono}">telefono</p>
+                <a th:href="@{/editar_camionero/{id}(id=${camionero.idCamionero})}" class="boton opcion">editar</a>
+                <form th:action="@{/camionero/delete/{id}(id=${camionero.idCamionero})}" th:method="post" >
+					<input type="hidden" name="_method" value="delete">
+                    <button type="submit" class="boton opcion">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+    </main>
+    <footer th:replace="~{layout::layout-footer}"></footer>
+</body>
+</html>

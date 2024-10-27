@@ -7,18 +7,18 @@
     <title th:text="${titulo}"></title>
 </head>
 <body>
-    <nav th:fragment="layout-navbar">
-        <a href="/">App Camiones</a>
-        <ul>
-            <li><a th:href="@{/camionero}">camioneros</a></li>
-            <li><a th:href="@{/camion}">camiones</a></li>
-            <li><a th:href="@{/ciudad}">ciudades</a></li>
-            <li><a th:href="@{/paquete}">paquetes</a></li>
-            <li><a th:href="@{/viaje}">viajes</a></li>
+    <nav th:fragment="layout-navbar" class="layout-navbar">
+        <a href="/" class="navbar__titulo">App Camiones</a>
+        <ul class="navbar__lista">
+            <li><a th:href="@{/camioneros}" class="navbar__lista__elemento">camioneros</a></li>
+            <li><a th:href="@{/camiones}" class="navbar__lista__elemento">camiones</a></li>
+            <li><a th:href="@{/ciudades}" class="navbar__lista__elemento">ciudades</a></li>
+            <li><a th:href="@{/paquetes}" class="navbar__lista__elemento">paquetes</a></li>
+            <li><a th:href="@{/viajes}" class="navbar__lista__elemento">viajes</a></li>
         </ul>
-        <a href="/logout">Logout</a>
+        <a href="/logout" class="navbar__logout">Logout</a>
     </nav>
-    <footer th:fragment="layout-footer">
+    <footer th:fragment="layout-footer" class="layout-footer">
         <p>Desarrollado por Hugo Martín Nacarino &copy; - 2024</p>
     </footer>
 </body>

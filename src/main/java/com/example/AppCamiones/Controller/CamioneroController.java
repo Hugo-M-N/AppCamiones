@@ -3,19 +3,19 @@ package com.example.AppCamiones.Controller;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.AppCamiones.Model.CamioneroModel;
 import com.example.AppCamiones.Service.CamioneroService;
 
-@RestController
+@Controller
 @RequestMapping("/camionero")
 public class CamioneroController {
 
@@ -23,12 +23,10 @@ public class CamioneroController {
 	CamioneroService camioneroService;
 	
 	@PostMapping("/add")
-	public CamioneroModel addCamionero(@RequestBody CamioneroModel camionero) {
-		CamioneroModel result  = new CamioneroModel();
+	public String addCamionero(@ModelAttribute CamioneroModel camionero) {
+		CamioneroModel result  = camioneroService.addCamionero(camionero);
 		
-		result = camioneroService.addCamionero(camionero);
-		
-		return result;
+		return "redirect:/camioneros";
 	}
 	
 	@GetMapping("/getAll")
@@ -59,20 +57,16 @@ public class CamioneroController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public CamioneroModel updateCamionero(@PathVariable(name="id")Integer id, @RequestBody CamioneroModel update) {
-		CamioneroModel result = new CamioneroModel();
+	public String updateCamionero(@PathVariable(name="id")Integer id, @ModelAttribute CamioneroModel update) {
+		CamioneroModel result = camioneroService.updateCamionero(id, update);
 		
-		result = camioneroService.updateCamionero(id, update);
-		
-		return result;
+		return "redirect:/camioneros";
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public Boolean deleteCamionero(@PathVariable(name="id")Integer id) {
-		Boolean result = false;
+	public String deleteCamionero(@PathVariable(name="id")Integer id) {
+		Boolean result =  camioneroService.deleteCamionero(id);
 		
-		result = camioneroService.deleteCamionero(id);
-		
-		return result;
+		return "redirect:/camioneros";
 	}
 }
