@@ -11,8 +11,15 @@ public class SecurityConfig {
 	@Bean
 	public DefaultSecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(request ->{
-			request.requestMatchers("/").permitAll();
-			request.anyRequest().permitAll();
+			request.requestMatchers("/login").permitAll();
+			try {
+				request.anyRequest().authenticated()
+				.and().formLogin().loginPage("/login").defaultSuccessUrl("/inicio", true).permitAll()
+				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout").permitAll();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		});
 		
 		return http.build();

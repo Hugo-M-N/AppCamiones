@@ -42,6 +42,11 @@ public class PaginaController {
 		return "redirect:/inicio";
 	}
 	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
 	@GetMapping("/inicio")
 	public String inicio(Model model) {
 		Integer numCamioneros =  camioneroService.getAllCamioneros().size();
